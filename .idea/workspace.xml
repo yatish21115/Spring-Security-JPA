@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cec4dba4-dc17-4a84-9eeb-41855de96e85" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\YATISH SHARMA\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1iKmjhxvVOWcrp4byUVKEaOoVZq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\YATISH SHARMA\Desktop\spring-security-jpa\src\main\resources\templates" />
+      <recent name="C:\Users\YATISH SHARMA\Desktop\spring-security-jpa\src\main\resources\templates\public" />
+      <recent name="C:\Users\YATISH SHARMA\Desktop\spring-security-jpa\src\test" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="SpringSecurityJpaApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.login.springsecurityjpa.SpringSecurityJpaApplication" />
+      <module name="spring-security-jpa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.login.springsecurityjpa.Models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SpringSecurityJpaApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cec4dba4-dc17-4a84-9eeb-41855de96e85" name="Default Changelist" comment="" />
+      <created>1601664816849</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601664816849</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="309" y="42" key="#Inspections" timestamp="1601764178358">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="309" y="42" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1601764178358" />
+    <state x="488" y="70" width="434" height="587" key="#com.intellij.ide.util.MemberChooser" timestamp="1601824866796">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="70" width="434" height="587" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1601824866796" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1601839969765">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601839969765" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1601839969765">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1601839969765" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1601839969765">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1601839969765" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1601839969765">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1601839969765" />
+    <state x="297" y="184" width="771" height="513" key="Registry" timestamp="1601802703429">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="297" y="184" width="771" height="513" key="Registry/0.0.1366.728@0.0.1366.728" timestamp="1601802703429" />
+    <state x="184" y="9" key="SettingsEditor" timestamp="1601802643775">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1601802643775" />
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1601831338694">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1601831338694" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1601815861784">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1601815861784" />
+  </component>
+</project>
