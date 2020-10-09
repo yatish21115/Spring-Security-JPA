@@ -10,7 +10,7 @@
     <div>
         <form th:action="@{/login}" method="POST" class="form-signin">
             <h3 class="form-signin-heading" th:text="Login"></h3>
-            <br /> <input type="text" id="username" name="username" th:placeholder="Username" class="form-control" /> <br /><input type="password" th:placeholder="Password" id="password" name="password" class="form-control" /><br />
+            <br /> <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" /> <br /><input type="password" th:placeholder="Password" id="password" name="password" class="form-control" /><br />
 
             <div th:if="${param.error}">
                 <p>Email or Password is invalid.</p>

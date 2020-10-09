@@ -1,38 +1,53 @@
 package com.login.springsecurityjpa.Models;
 
-
-
 import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
+
     @Id
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @NotNull(message = "Please enter the username")
+    private Long id;
+
+    @NotNull(message = "Username is mandatory")
     private String username;
-    @NotNull(message = "Please enter the password")
-    @Length(min = 5,message = "Password should be at least 5 characters")
+
+    @Length(min = 5, message = "Password must be at least 5 characters")
+    @NotNull(message = "Password is mandatory")
     private String password;
-    private boolean active;
-    private String roles;
-    @NotNull(message = "Please enter the Name")
-    private String name;
-    @NotNull(message = "Please enter the Mobile")
-    private String mobie;
-    @NotNull(message = "Please enter the email")
-    @Email(message = "Please enter correct Email-Id")
+
+    private boolean enabled;
+
+    @NotNull(message = "First Name is mandatory")
+    private String firstname;
+
+    @NotNull(message = "Last Name is mandatory")
+    private String lastname;
+
+    @Email(message = "Email is not valid")
+    @NotNull(message = "Email is mandatory")
     private String email;
 
-    public int getId() {
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -52,28 +67,36 @@ public class User {
         this.password = password;
     }
 
-    public boolean isActive() {
-        return active;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getEmail() {
@@ -82,13 +105,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getMobie() {
-        return mobie;
-    }
-
-    public void setMobie(String mobie) {
-        this.mobie = mobie;
     }
 }

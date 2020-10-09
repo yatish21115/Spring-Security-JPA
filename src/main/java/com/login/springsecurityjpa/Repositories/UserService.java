@@ -1,4 +1,4 @@
-package com.login.springsecurityjpa;
+package com.login.springsecurityjpa.Repositories;
 
 import com.login.springsecurityjpa.Models.User;
 
