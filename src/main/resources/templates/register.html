@@ -23,8 +23,6 @@
             <span class="message" style="color:red;" th:utext="${successMessage}"></span>
             <div class="alert alert-error"
                  th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
-                <!--          <button type="button" class="close" data-dismiss="alert"-->
-                <!--                  aria-hidden="true"></button>-->
                 <div class="alert alert-error" th:each="data : ${bindingResult.getAllErrors()}">
                     <p class="message" style="color:red;" th:text="${data.getDefaultMessage()}"></p>
                 </div>
