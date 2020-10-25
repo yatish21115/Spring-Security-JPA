@@ -1,97 +1,225 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+/* colors */
+html {
+  width: 100%;
+  height: 100%;
+}
 
-.login-page {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-}
-.form {
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-.form input {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-.form button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #4CAF50;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-.form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
-}
-.form .message {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
-}
-.form .message a {
-  color: #4CAF50;
-  text-decoration: none;
-}
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
-}
-.container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.container .info {
-  margin: 50px auto;
-  text-align: center;
-}
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #1a1a1a;
-}
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-.container .info span .fa {
-  color: #EF3B3A;
-}
 body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
-  font-family: "Roboto", sans-serif;
+  background: #4eb8dd; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #4eb8dd, #8DC26F);
+  background: -moz-linear-gradient(right, #4eb8dd, #8DC26F);
+  background: -o-linear-gradient(right, #4eb8dd, #8DC26F);
+  background: linear-gradient(to left, #4eb8dd, #8DC26F);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+}
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  background-color: #FFF;
+  margin: 0;
+  padding: 2.25em;
+  box-sizing: border-box;
+  border: solid 1px #DDD;
+  border-radius: .5em;
+  font-family: 'Roboto', sans-serif;
+}
+form .svgContainer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1em;
+  border-radius: 50%;
+  pointer-events: none;
+}
+form .svgContainer div {
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  padding-bottom: 100%;
+}
+form .svgContainer .mySVG {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+form .svgContainer:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: inherit;
+  height: inherit;
+  box-sizing: border-box;
+  border: solid 2.5px #217093;
+  border-radius: 50%;
+}
+form .inputGroup {
+  margin: 0 0 2em;
+  padding: 0;
+  position: relative;
+}
+form .inputGroup:last-of-type {
+  margin-bottom: 0;
+}
+form label {
+  margin: 0 0 12px;
+  display: block;
+  font-size: 1.25em;
+  color: #217093;
+  font-weight: 700;
+  font-family: inherit;
+}
+form input[type='email'], form input[type="text"], form input[type="number"], form input[type="url"], form input[type="search"], form input[type="password"] {
+  display: block;
+  margin: 0;
+  padding: 0 1em 0;
+  padding: .875em 1em 0;
+  background-color: #f3fafd;
+  border: solid 2px #217093;
+  border-radius: 4px;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 65px;
+  font-size: 1.55em;
+  color: #353538;
+  font-weight: 600;
+  font-family: inherit;
+  -webkit-transition: box-shadow .2s linear, border-color .25s ease-out;
+  transition: box-shadow .2s linear, border-color .25s ease-out;
+}
+form input[type='email']:focus, form input[type="text"]:focus, form input[type="number"]:focus, form input[type="url"]:focus, form input[type="search"]:focus, form input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border: solid 2px #4eb8dd;
+}
+form button {
+  display: block;
+  margin: 0;
+  padding: .65em 1em 1em;
+  background-color: #4eb8dd;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: none;
+  width: 100%;
+  height: 65px;
+  font-size: 1.55em;
+  color: #FFF;
+  font-weight: 600;
+  font-family: inherit;
+  -webkit-transition: background-color .2s ease-out;
+  transition: background-color .2s ease-out;
+}
+form button:hover, form button:active {
+  background-color: #217093;
+}
+form .inputGroup1 .helper {
+  position: absolute;
+  z-index: 1;
+  font-family: inherit;
+}
+form .inputGroup1 .helper1 {
+  top: 0;
+  left: 0;
+  -webkit-transform: translate(1em, 2.2em) scale(1);
+          transform: translate(1em, 2.2em) scale(1);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  color: #217093;
+  font-size: 1.55em;
+  font-weight: 400;
+  opacity: .65;
+  pointer-events: none;
+  -webkit-transition: opacity .2s linear, -webkit-transform .2s ease-out;
+  transition: opacity .2s linear, -webkit-transform .2s ease-out;
+  transition: transform .2s ease-out, opacity .2s linear;
+  transition: transform .2s ease-out, opacity .2s linear, -webkit-transform .2s ease-out;
+}
+form .inputGroup1.focusWithText .helper {
+  -webkit-transform: translate(1em, 1.55em) scale(0.6);
+          transform: translate(1em, 1.55em) scale(0.6);
+  opacity: 1;
+}
+form .inputGroup2 input[type="password"] {
+  padding: .4em 1em .5em;
+}
+form .inputGroup2 input[type="text"] {
+  padding: .025em 1em 0;
+}
+form .inputGroup2 #showPasswordToggle {
+  display: block;
+  padding: 0 0 0 1.45em;
+  position: absolute;
+  top: .25em;
+  right: 0;
+  font-size: 1em;
+}
+form .inputGroup2 #showPasswordToggle input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+form .inputGroup2 #showPasswordToggle .indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: .85em;
+  width: .85em;
+  background-color: #f3fafd;
+  border: solid 2px #217093;
+  border-radius: 3px;
+}
+form .inputGroup2 #showPasswordToggle .indicator:after {
+  content: "";
+  position: absolute;
+  left: .25em;
+  top: .025em;
+  width: .2em;
+  height: .5em;
+  border: solid #217093;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  visibility: hidden;
+}
+form .message {
+  margin: 15px 0 0;
+  color: #000000;
+  font-size: 1em;
+}
+form .a {
+  color: #4eb8dd;
+  text-decoration: none;
+}
+form .inputGroup2 #showPasswordToggle input:checked ~ .indicator:after {
+  visibility: visible;
+}
+form .inputGroup2 #showPasswordToggle input:focus ~ .indicator, form .inputGroup2 #showPasswordToggle input:hover ~ .indicator {
+  border-color: #4eb8dd;
+}
+form .inputGroup2 #showPasswordToggle input:disabled ~ .indicator {
+  opacity: .5;
+}
+form .inputGroup2 #showPasswordToggle input:disabled ~ .indicator:after {
+  visibility: hidden;
 }

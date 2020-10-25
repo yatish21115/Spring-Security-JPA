@@ -1,5 +1,4 @@
 package com.login.springsecurityjpa;
-
 import com.login.springsecurityjpa.Models.User;
 import com.login.springsecurityjpa.Repositories.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
