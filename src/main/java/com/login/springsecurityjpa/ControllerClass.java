@@ -49,7 +49,7 @@ public class ControllerClass {
     }
 
     @PostMapping("/forgot")
-    public ModelAndView forgot_password(@Valid User user,@RequestParam("email") String email, @RequestParam("security") String security,@RequestParam("answer") String answer, @RequestParam("password") String password, RedirectAttributes redirectAttributes){
+    public ModelAndView forgot_password(User user,@RequestParam("email") String email, @RequestParam("security") String security,@RequestParam("answer") String answer, @RequestParam("password") String password, RedirectAttributes redirectAttributes){
         ModelAndView modelAndView = new ModelAndView();
         User reset_user = userService.isEmailAlreadyPresent(user);
         try {
@@ -91,11 +91,11 @@ public class ControllerClass {
     public ModelAndView registerUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
         ModelAndView modelAndView = new ModelAndView();
         if(bindingResult.hasErrors()){
-            modelAndView.addObject("successMessage","Please correct the errors in form!");
+            modelAndView.addObject("failureMessage","Please correct the errors in form!");
             modelMap.addAttribute("bindingResult", bindingResult);
         }
         else if(userService.isUserAlreadyPresent(user)){
-            modelAndView.addObject("successMessage","Username already exist");
+            modelAndView.addObject("failureMessage","Username already exist");
         }
         else {
             userService.saveUser(user);

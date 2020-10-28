@@ -33,13 +33,14 @@
             </div>
             <input type="text" name="answer" placeholder="Your Answer" required />
             <button type="submit" class="btn btn-primary btn-block">Register Now</button>
-            <span class="message" style="color:red;" th:utext="${successMessage}"></span>
             <div class="alert alert-error"
                  th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
                 <div class="alert alert-error" th:each="data : ${bindingResult.getAllErrors()}">
                     <p class="message" style="color:red;" th:text="${data.getDefaultMessage()}"></p>
                 </div>
             </div>
+            <span class="message" style="color:red;" th:utext="${failureMessage}"></span>
+            <span class="message" style="color:green;" th:utext="${successMessage}"></span>
             <p class="message" align="center"><a href="forgot">Forgot Password?</a></p>
             <p class="message" align="center"><a href="login">Already registered? Sign In!</a></p>
         </form>
