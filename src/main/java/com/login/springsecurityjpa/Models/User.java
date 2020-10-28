@@ -37,6 +37,10 @@ public class User {
     @NotNull(message = "Email is mandatory")
     private String email;
 
+    private String security;
+
+    private String answer;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",

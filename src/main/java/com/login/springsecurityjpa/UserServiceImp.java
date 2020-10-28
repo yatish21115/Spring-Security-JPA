@@ -41,4 +41,16 @@ public class UserServiceImp implements UserService{
         }
         return isUserAlreadyExists;
     }
+
+    @Override
+    public User isEmailAlreadyPresent(User user) {
+        boolean isUserAlreadyExists = false;
+        User existingUser = userRepository.getUserByEmail(user.getEmail());
+        // If user is found in database, then then user already exists.
+        if(existingUser != null){
+            //isUserAlreadyExists = true;
+            return existingUser;
+        }
+        return null;
+    }
 }

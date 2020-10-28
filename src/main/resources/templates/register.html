@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Register New User</title>
     <link rel="stylesheet" href="/css/style2.css">
 
 </head>
@@ -12,13 +12,26 @@
 <!-- partial:index.partial.html -->
 <div class="login-page">
     <div class="form">
-        <form class="login-form" autocomplete="off" th:action="@{/register}" th:object="${user}"
+<!--        <h2 style="text-align:center">Create An Account!</h2>-->
+        <form class="login-form" id="form_register" autocomplete="off" th:action="@{/register}" th:object="${user}"
               method="post">
             <input type="text" name="firstname" placeholder="First Name" required />
             <input type="text" name="lastname" placeholder="Last Name" required />
             <input type="email" name="email" placeholder="Email" required />
             <input type="text" name="username" placeholder="Username" required />
             <input type="password" name="password" placeholder="Password" required />
+            <div class="selectdiv">
+                <label>
+            <select name="security" id="questions" form="form_register">
+                <option disabled selected value> -- Select an Option -- </option>
+                <option value="food">Which is your favourite food?</option>
+                <option value="colour">Which is your favourite colour?</option>
+                <option value="game">Which is your favourite game?</option>
+                <option value="show">Which is your favourite show?</option>
+            </select>
+                </label>
+            </div>
+            <input type="text" name="answer" placeholder="Your Answer" required />
             <button type="submit" class="btn btn-primary btn-block">Register Now</button>
             <span class="message" style="color:red;" th:utext="${successMessage}"></span>
             <div class="alert alert-error"
@@ -27,7 +40,8 @@
                     <p class="message" style="color:red;" th:text="${data.getDefaultMessage()}"></p>
                 </div>
             </div>
-            <p class="message">Already registered? <a href="login">Sign In</a></p>
+            <p class="message" align="center"><a href="forgot">Forgot Password?</a></p>
+            <p class="message" align="center"><a href="login">Already registered? Sign In!</a></p>
         </form>
     </div>
 </div>

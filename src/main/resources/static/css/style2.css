@@ -5,6 +5,7 @@
   padding: 8% 0 0;
   margin: auto;
 }
+
 .form {
   position: absolute;
     top: 50%;
@@ -33,6 +34,39 @@
   box-sizing: border-box;
   font-size: 1.25em;
 }
+.form selectdiv {
+  position: absolute;
+  /*Don't really need this just for demo styling*/
+
+  min-width: 500px;
+  margin: 50px 33%;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
+  float: left;
+  margin: 0 0 15px;
+  padding: 0px 15px;
+  font-size: 1.25em;
+  line-height: 2.75;
+  color: #333;
+  background-color: #f2f2f2;
+  background: url(https://image.flaticon.com/icons/svg/60/60995.svg) 96% / 8% no-repeat #EEE;
+  border: 1px solid #cccccc;
+  -ms-word-break: normal;
+  word-break: normal;
+}
+
 .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
@@ -56,8 +90,11 @@
   font-size: 1em;
 }
 .form .message a {
-  color: #4eb8dd;
+  color: #000080;
   text-decoration: none;
+}
+.form .center{
+  text-align: center;
 }
 .container {
   position: relative;

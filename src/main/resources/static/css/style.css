@@ -207,8 +207,11 @@ form .message {
   color: #000000;
   font-size: 1em;
 }
-form .a {
-  color: #4eb8dd;
+form .center{
+  text-align: center;
+}
+form .message a {
+  color: #000080;
   text-decoration: none;
 }
 form .inputGroup2 #showPasswordToggle input:checked ~ .indicator:after {

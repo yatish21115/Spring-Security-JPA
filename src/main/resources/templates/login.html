@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>CodePen - yeti login</title>
+	<title>Welcome - Login Here</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 	<link rel="stylesheet" href="/css/style.css">
 
@@ -204,10 +204,12 @@
 			<br>
 		</div>
 		<div class="inputGroup inputGroup3">
-			<button id="login">Log in</button>
+			<button id="login">LOG IN</button>
 		</div>
 		<br>
-		<p class="message">Not registered? <a href="register">Create an account</a></p>
+		<span class="message" style="color:red;" th:utext="${Message}"></span>
+		<p class="message" align="center"><a href="forgot">Forgot Password?</a></p>
+		<p class="message" align="center"><a href="register">Not registered? Create an account</a></p>
 	</form>
 	<!-- partial -->
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script>

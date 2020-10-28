@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Forgot Password</title>
+  <!-- Custom fonts for this template-->
+<!--  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">-->
+<!--  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">-->
+
+  <link href="/css/style2.css" rel="stylesheet">
+
+</head>
+
+<body class="login-page">
+<div class="login-page">
+  <div class="form">
+    <h2 style="text-align:center">Forgot Your Password?</h2>
+    <p class="message" align="justify">We get it, stuff happens. Just enter your email address below and answer the security question you used during registeration to reset your password!</p>
+    <br>
+    <form class="login-form" autocomplete="off" id="form_reset" th:action="@{/forgot}" th:object="${user}" method="post">
+      <input type="email" name="email" placeholder="Email" required />
+      <div class="selectdiv">
+        <label>
+      <select name="security" id="questions" form="form_reset">
+        <option disabled selected value>Select an Option</option>
+        <option value="food">Which is your favourite food?</option>
+        <option value="colour">Which is your favourite colour?</option>
+        <option value="game">Which is your favourite game?</option>
+        <option value="show">Which is your favourite show?</option>
+      </select>
+        </label>
+      </div>
+      <input type="text" name="answer" placeholder="Your Answer" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit" class="btn btn-primary btn-block">Reset Password</a></button>
+      <span class="message" style="color:red;" th:utext="${successMessage}"></span>
+      <div class="alert alert-error"
+           th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
+        <div class="alert alert-error" th:each="data : ${bindingResult.getAllErrors()}">
+          <p class="message" style="color:red;" th:text="${data.getDefaultMessage()}"></p>
+        </div>
+      </div>
+      <p class="message" align="center"><a href="register">Create Account!</a></p>
+      <p class="message" align="center"><a href="login">Already have an account? Login!</a></p>
+    </form>
+  </div>
+</div>
+<!-- partial -->
+<!--<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
+<!--<script src="/js/script.js"></script>-->
+
+</body>
+
+</html>
