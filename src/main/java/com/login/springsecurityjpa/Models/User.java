@@ -18,23 +18,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Username is mandatory")
+    //@NotNull(message = "Username is mandatory")
     private String username;
 
-    @Length(min = 5, message = "Password must be at least 5 characters")
-    @NotNull(message = "Password is mandatory")
+    //@Length(min = 5, message = "Password must be at least 5 characters")
+    //@NotNull(message = "Password is mandatory")
     private String password;
 
     private boolean enabled;
 
-    @NotNull(message = "First Name is mandatory")
+    //@NotNull(message = "First Name is mandatory")
     private String firstname;
 
-    @NotNull(message = "Last Name is mandatory")
+    //@NotNull(message = "Last Name is mandatory")
     private String lastname;
 
-    @Email(message = "Email is not valid")
-    @NotNull(message = "Email is mandatory")
+    //@Email(message = "Email is not valid")
+    //@NotNull(message = "Email is mandatory")
     private String email;
 
     private String security;

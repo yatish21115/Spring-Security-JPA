@@ -63,7 +63,7 @@ public class ControllerClass {
 
                 }
                 else {
-                    modelAndView.addObject("successMessage", "Security question & answer does not exist.");
+                    modelAndView.addObject("successMessage", "Security question & answer does not match.");
                     modelAndView.addObject("user", user);
                     modelAndView.setViewName("forgot");
                 }
