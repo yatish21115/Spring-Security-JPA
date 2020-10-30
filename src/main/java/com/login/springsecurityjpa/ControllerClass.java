@@ -32,6 +32,13 @@ public class ControllerClass {
         return modelAndView;
     }
 
+    @GetMapping("/")
+    public ModelAndView redir_home(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:home");
+        return modelAndView;
+    }
+
     @GetMapping("/home")
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
