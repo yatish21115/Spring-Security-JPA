@@ -40,7 +40,8 @@
       </select>
         </label>
       </div>
-      <input type="text" name="answer" placeholder="Your Answer" required />
+      <input type="text" name="answer" id="form_answer" placeholder="Your Answer" required />
+      <span class="error_form" id="answer_error_message"></span>
       <input type="password" id="form_password" name="password" placeholder="Password" class="pr-password form-control">
       <span class="error_form" id="password_error_message"></span>
       <input type="password" id="form_retype_password" name="password" placeholder="Confirm Password" required>
@@ -67,10 +68,12 @@
                 $("#email_error_message").hide();
                 $("#password_error_message").hide();
                 $("#retype_password_error_message").hide();
+                $("#answer_error_message").hide();
 
                 var error_email = false;
                 var error_password = false;
                 var error_retype_password = false;
+                var error_answer = false;
 
                 $("#form_email").focusout(function () {
                     check_email();
@@ -80,6 +83,9 @@
                 });
                 $("#form_retype_password").focusout(function () {
                     check_retype_password();
+                });
+                $("#form_answer").focusout(function() {
+                    check_answer();
                 });
 
                 function check_password() {
@@ -124,16 +130,31 @@
                     }
                 }
 
+                function check_answer() {
+                    var answer = $("#form_answer").val();
+                    if (answer!== '') {
+                        $("#answer_error_message").hide();
+                        $("#form_answer").css("border-bottom", "2px solid #34F458");
+                    } else {
+                        $("#answer_error_message").html(""); //-------
+                        $("#answer_error_message").hide();   // hide to show
+                        $("#form_answer").css("border-bottom", "2px solid #F90A0A");
+                        error_answer = true;
+                    }
+                }
+
                 $("#form_register").submit(function () {
                     error_email = false;
                     error_password = false;
                     error_retype_password = false;
+                    error_answer = false;
 
                     check_email();
                     check_password();
                     check_retype_password();
+                    check_answer();
 
-                    if (error_email === false && error_password === false && error_retype_password === false) {
+                    if (error_email === false && error_password === false && error_retype_password === false && error_answer === false) {
                         alert("Registration Successfull");
                         return true;
                     } else {

@@ -42,7 +42,8 @@
             <span class="error_form" id="email_error_message"></span>
                 </div>
                 <div class="Geeks2 GFG">
-            <input type="text" name="username" placeholder="Username" required />
+            <input type="text" name="username" id="form_username" placeholder="Username" required />
+                    <span class="error_form" id="username_error_message"></span>
                 </div>
             </div>
             <input type="password" id="form_password" name="password" placeholder="Password" class="pr-password form-control">
@@ -60,7 +61,8 @@
             </select>
                 </label>
             </div>
-            <input type="text" name="answer" placeholder="Your Answer" required />
+            <input type="text" name="answer" id="form_answer" placeholder="Your Answer" required />
+            <span class="error_form" id="answer_error_message"></span>
             <button type="submit" class="btn btn-primary btn-block">Register Now</button>
 <!--            <div class="alert alert-error"-->
 <!--                 th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">-->
@@ -86,12 +88,16 @@
                 $("#email_error_message").hide();
                 $("#password_error_message").hide();
                 $("#retype_password_error_message").hide();
+                $("#username_error_message").hide();
+                $("#answer_error_message").hide();
 
                 var error_fname = false;
                 var error_sname = false;
                 var error_email = false;
                 var error_password = false;
                 var error_retype_password = false;
+                var error_username = false;
+                var error_answer = false;
 
                 $("#form_fname").focusout(function () {
                     check_fname();
@@ -107,6 +113,12 @@
                 });
                 $("#form_retype_password").focusout(function () {
                     check_retype_password();
+                });
+                $("#form_username").focusout(function() {
+                    check_username();
+                });
+                $("#form_answer").focusout(function() {
+                    check_answer();
                 });
 
                 function check_fname() {
@@ -179,20 +191,51 @@
                     }
                 }
 
+                function check_username() {
+                    var username_length = $("#form_username").val().length;
+                    if (username_length < 5) {
+                        $("#username_error_message").html(""); //-------
+                        $("#username_error_message").hide();   // hide to show
+                        $("#form_username").css("border-bottom", "2px solid #F90A0A");
+                        error_username = true;
+
+                    } else {
+                        $("#username_error_message").hide();
+                        $("#form_username").css("border-bottom", "2px solid #34F458");
+                    }
+                }
+
+                function check_answer() {
+                    var answer = $("#form_answer").val();
+                    if (answer!== '') {
+                        $("#answer_error_message").hide();
+                        $("#form_answer").css("border-bottom", "2px solid #34F458");
+                    } else {
+                        $("#answer_error_message").html(""); //-------
+                        $("#answer_error_message").hide();   // hide to show
+                        $("#form_answer").css("border-bottom", "2px solid #F90A0A");
+                        error_answer = true;
+                    }
+                }
+
                 $("#form_register").submit(function () {
                     error_fname = false;
                     error_sname = false;
                     error_email = false;
                     error_password = false;
                     error_retype_password = false;
+                    error_username = false;
+                    error_answer = false;
 
                     check_fname();
                     check_sname();
                     check_email();
                     check_password();
                     check_retype_password();
+                    check_username();
+                    check_answer();
 
-                    if (error_fname === false && error_sname === false && error_email === false && error_password === false && error_retype_password === false) {
+                    if (error_fname === false && error_sname === false && error_email === false && error_password === false && error_retype_password === false && error_username === false && error_answer === false) {
                         alert("Registration Successfull");
                         return true;
                     } else {
