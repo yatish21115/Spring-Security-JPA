@@ -31,8 +31,8 @@
       <span class="error_form" id="email_error_message"></span>
       <div class="selectdiv">
         <label>
-      <select name="security" id="questions" form="form_reset">
-        <option disabled selected value>Select an Option</option>
+      <select name="security" id="questions" form="form_reset" required>
+        <option disabled selected value>--Select Security Question--</option>
         <option value="food">Which is your favourite food?</option>
         <option value="colour">Which is your favourite colour?</option>
         <option value="game">Which is your favourite game?</option>
@@ -42,9 +42,9 @@
       </div>
       <input type="text" name="answer" id="form_answer" placeholder="Your Answer" required />
       <span class="error_form" id="answer_error_message"></span>
-      <input type="password" id="form_password" name="password" placeholder="Password" class="pr-password form-control">
+      <input type="password" id="form_password" name="password" placeholder="Password" class="pr-password form-control" required>
       <span class="error_form" id="password_error_message"></span>
-      <input type="password" id="form_retype_password" name="password" placeholder="Confirm Password" required>
+      <input type="password" id="form_retype_password" placeholder="Confirm Password" required>
       <span class="error_form" id="retype_password_error_message"></span>
       <button type="submit" class="btn btn-primary btn-block">Reset Password</a></button>
       <span class="message" style="color:red;" th:utext="${successMessage}"></span>
@@ -88,6 +88,20 @@
                     check_answer();
                 });
 
+                function check_email() {
+                    var pattern = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                    var email = $("#form_email").val();
+                    if (pattern.test(email) && email !== '') {
+                        $("#email_error_message").hide();
+                        $("#form_email").css("border-bottom", "2px solid #34F458");
+                    } else {
+                        $("#email_error_message").html("");   //-----
+                        $("#email_error_message").show();    // hide to show
+                        $("#form_email").css("border-bottom", "2px solid #F90A0A");
+                        error_email = true;
+                    }
+                }
+
                 function check_password() {
                     var password_val = $("#form_password").val();
                     var password_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -99,6 +113,19 @@
                         $("#password_error_message").hide();    // hide to show
                         $("#form_password").css("border-bottom", "2px solid #F90A0A");
                         error_password = true;
+                    }
+                }
+
+                function check_answer() {
+                    var answer = $("#form_answer").val();
+                    if (answer!== '') {
+                        $("#answer_error_message").hide();
+                        $("#form_answer").css("border-bottom", "2px solid #34F458");
+                    } else {
+                        $("#answer_error_message").html(""); //-------
+                        $("#answer_error_message").hide();   // hide to show
+                        $("#form_answer").css("border-bottom", "2px solid #F90A0A");
+                        error_answer = true;
                     }
                 }
 
@@ -116,34 +143,7 @@
                     }
                 }
 
-                function check_email() {
-                    var pattern = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-                    var email = $("#form_email").val();
-                    if (pattern.test(email) && email !== '') {
-                        $("#email_error_message").hide();
-                        $("#form_email").css("border-bottom", "2px solid #34F458");
-                    } else {
-                        $("#email_error_message").html("");   //-----
-                        $("#email_error_message").show();    // hide to show
-                        $("#form_email").css("border-bottom", "2px solid #F90A0A");
-                        error_email = true;
-                    }
-                }
-
-                function check_answer() {
-                    var answer = $("#form_answer").val();
-                    if (answer!== '') {
-                        $("#answer_error_message").hide();
-                        $("#form_answer").css("border-bottom", "2px solid #34F458");
-                    } else {
-                        $("#answer_error_message").html(""); //-------
-                        $("#answer_error_message").hide();   // hide to show
-                        $("#form_answer").css("border-bottom", "2px solid #F90A0A");
-                        error_answer = true;
-                    }
-                }
-
-                $("#form_register").submit(function () {
+                $("#form_reset").submit(function () {
                     error_email = false;
                     error_password = false;
                     error_retype_password = false;
@@ -155,7 +155,7 @@
                     check_answer();
 
                     if (error_email === false && error_password === false && error_retype_password === false && error_answer === false) {
-                        alert("Registration Successfull");
+                        alert("Password Reset Successfully");
                         return true;
                     } else {
                         alert("Please Fill the form Correctly");

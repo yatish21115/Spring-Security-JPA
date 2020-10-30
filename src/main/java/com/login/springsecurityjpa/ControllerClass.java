@@ -109,7 +109,7 @@ public class ControllerClass {
             modelAndView.addObject("successMessage", "User is registered successfully");
         }
         modelAndView.addObject("user",user);
-        modelAndView.setViewName("register");
+        modelAndView.setViewName("redirect:login");
         return modelAndView;
     }
 }

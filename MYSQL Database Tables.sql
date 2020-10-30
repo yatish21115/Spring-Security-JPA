@@ -6,6 +6,8 @@ CREATE TABLE users (
   lastname varchar(50) NOT NULL,
   password varchar(64) NOT NULL,
   enabled tinyint(4) DEFAULT NULL,
+  security varchar(225) NOT NULL,
+  answer varchar(225) NOT NULL,
   PRIMARY KEY (user_id),
   UNIQUE KEY email_UNIQUE (email)
 );

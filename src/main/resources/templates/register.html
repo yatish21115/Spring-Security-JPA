@@ -48,12 +48,12 @@
             </div>
             <input type="password" id="form_password" name="password" placeholder="Password" class="pr-password form-control">
             <span class="error_form" id="password_error_message"></span>
-            <input type="password" id="form_retype_password" name="password" placeholder="Confirm Password" required>
+            <input type="password" id="form_retype_password" placeholder="Confirm Password" required>
             <span class="error_form" id="retype_password_error_message"></span>
             <div class="selectdiv">
                 <label>
             <select name="security" id="questions" form="form_register">
-                <option disabled selected value> -- Select an Option -- </option>
+                <option disabled selected value>--Select Security Question--</option>
                 <option value="food">Which is your favourite food?</option>
                 <option value="colour">Which is your favourite colour?</option>
                 <option value="game">Which is your favourite game?</option>
@@ -236,7 +236,7 @@
                     check_answer();
 
                     if (error_fname === false && error_sname === false && error_email === false && error_password === false && error_retype_password === false && error_username === false && error_answer === false) {
-                        alert("Registration Successfull");
+                        alert("User Registered Successfully");
                         return true;
                     } else {
                         alert("Please Fill the form Correctly");
