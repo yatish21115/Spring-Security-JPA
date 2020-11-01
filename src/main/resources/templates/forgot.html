@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=0.8, initial-scale=1.0, shrink-to-fit=no" />
   <title>Forgot Password</title>
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
   <link href="/css/style2.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/jquery.passwordRequirements.css">
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -24,7 +25,7 @@
 <body class="login-page">
 <div class="login-page">
   <div class="form">
-    <h2 style="text-align:center">Forgot Your Password?</h2>
+    <h1 style="text-align:center">Forgot Your Password?</h1>
     <p class="message" align="justify">We get it, stuff happens. Just enter your email address below and answer the security question you used during registeration to reset your password!</p>
     <br>
     <form class="login-form" autocomplete="off" id="form_reset" th:action="@{/forgot}" th:object="${user}" method="post">

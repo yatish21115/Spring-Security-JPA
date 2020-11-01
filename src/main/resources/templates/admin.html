@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=0.8, initial-scale=1.0, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Tables</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/style2.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+
+<!-- Page Heading -->
+<br><br>
+<h1 class="h3 mb-2" align="center" style="color:black; font-size:60px"><b>Edit Users Data</b></h1>
+<br>
+<!--<p class="message" style="color:black;">Following are the users registered and their details. By the 'Edit' option either edit the details of-->
+<!--    the user or disable their accounts according to your needs. Also, if you want you can permanently remove the user-->
+<!--    from your adatabase by the 'Delete' option.</p>-->
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Following are the users registered and their details. By the 'Edit' option either edit the details of
+            the user or disable their accounts according to your needs. Also, if you want you can permanently remove the user
+            from your adatabase by the 'Delete' option.</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div align="center">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email ID</th>
+                    <th>Username</th>
+                    <th>Profile State</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email ID</th>
+                    <th>Username</th>
+                    <th>Profile State</th>
+                    <th>Actions</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr th:each="user : ${listusers}">
+                    <td th:text="${user.id}">User ID</td>
+                    <td th:text="${user.firstname}">First Name</td>
+                    <td th:text="${user.lastname}">Last Name</td>
+                    <td th:text="${user.email}">Email ID</td>
+                    <td th:text="${user.username}">Username</td>
+                    <td th:text="${user.enabled}">Profile Status</td>
+                    <td>
+                        <a th:href="@{'/edit/' + ${user.id}}"><img class="img-fluid" src="/assets/img/tabs/edit.jpg" alt="" /></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'/delete/' + ${user.id}}"><img class="img-fluid" src="/assets/img/tabs/delete.png" alt="" /></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+                <div align="center">
+                    <input type="button" value="Go To Home" class="button_active" onclick="location.href='home'"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<!-- Footer -->
+<footer class="sticky-footer transparent" style="color:black;">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up">back to top</i>
+</a>
+
+</body>
+
+</html>

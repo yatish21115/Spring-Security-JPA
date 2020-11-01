@@ -1,20 +1,17 @@
 package com.login.springsecurityjpa;
 import com.login.springsecurityjpa.Models.User;
 import com.login.springsecurityjpa.Repositories.UserService;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
-import java.security.Provider;
-import java.util.Map;
+import java.util.List;
 
 @RestController
 public class ControllerClass {
@@ -24,6 +21,49 @@ public class ControllerClass {
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @GetMapping("/admin")
+    public ModelAndView admin(){
+        ModelAndView modelAndView = new ModelAndView();
+        List<User> listusers = userService.listAll();
+        modelAndView.addObject("listusers",listusers);
+        modelAndView.setViewName("admin");
+        return modelAndView;
+    }
+
+    @GetMapping("/edit/{id}")
+    public ModelAndView edit(@PathVariable(name = "id") long id){
+        ModelAndView modelAndView = new ModelAndView();
+        User user = userService.get(id);
+        modelAndView.addObject("user",user);
+        modelAndView.setViewName("edit");
+        return modelAndView;
+    }
+
+    @GetMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable(name = "id") long id){
+        ModelAndView modelAndView = new ModelAndView();
+        User user = userService.get(id);
+        userService.delete(id);     //Always do - SET FOREIGN_KEY_CHECKS=0; IN MYsql
+        modelAndView.setViewName("redirect:/admin");
+        return modelAndView;
+    }
+
+    @PostMapping("/save")
+    public ModelAndView saveUser(User user,@RequestParam("enabled") boolean enabled,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,@RequestParam("username") String username){
+        ModelAndView modelAndView = new ModelAndView();
+        User edit_user = userService.isEmailAlreadyPresent(user);
+        modelAndView.addObject("successMessage", "The status is already"+((enabled==true)?"Activated":"Deactivated"));
+        edit_user.setFirstname(firstname);
+        edit_user.setLastname(lastname);
+        edit_user.setEmail(email);
+        edit_user.setUsername(username);
+        edit_user.setEnabled(enabled);
+        userService.saveEditUser(edit_user);
+        modelAndView.addObject( "user",user);
+        modelAndView.setViewName("redirect:admin");
+        return modelAndView;
+    }
 
     @GetMapping("/login")
     public ModelAndView login(){
@@ -95,7 +135,7 @@ public class ControllerClass {
     }
 
     @PostMapping("/register")
-    public ModelAndView registerUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
+    public ModelAndView registerUser(User user, BindingResult bindingResult, ModelMap modelMap){
         ModelAndView modelAndView = new ModelAndView();
         if(bindingResult.hasErrors()){
             modelAndView.addObject("failureMessage","Please correct the errors in form!");
@@ -113,33 +153,3 @@ public class ControllerClass {
         return modelAndView;
     }
 }
-
-
-//    @GetMapping("/reset")
-//    public ModelAndView reset_password(){
-//        ModelAndView modelAndView = new ModelAndView();
-//        User user = new User();
-//        modelAndView.addObject( "user",user);
-//        modelAndView.setViewName("reset");
-//        return modelAndView;
-//    }
-
-//    @PostMapping("/reset")
-//    public ModelAndView reset_password(User user, @RequestParam Map<String,String> requestParams){
-//        ModelAndView modelAndView = new ModelAndView();
-//        User reset_user = userService.isSecurityAlreadyPresent(user);
-//        if(requestParams.get("answer").equals(reset_user.getAnswer()))
-//        modelAndView.setViewName("password");
-//        return modelAndView;
-//    }
-
-//    @PostMapping("/password")
-//    public ModelAndView new_password(User user, @RequestParam Map<String,String> requestParams, RedirectAttributes redirectAttributes){
-//        ModelAndView modelAndView = new ModelAndView();
-//        reset_user.setPassword(bCryptPasswordEncoder.encode(requestParams.get("password")));
-//        userService.saveUser(reset_user);
-//        redirectAttributes.addFlashAttribute("successMessage", "You have successfully reset your password. You may now login");
-//        modelAndView.addObject("user",user);
-//        modelAndView.setViewName("redirect:login");
-//        return modelAndView;
-//    }

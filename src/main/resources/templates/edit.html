@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=0.8, initial-scale=1.0, shrink-to-fit=no" />
+  <title>Edit Details</title>
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <link href="/css/style2.css" rel="stylesheet">
+
+</head>
+
+<body class="login-page">
+<div class="login-page">
+  <div class="form">
+    <h1 align="center">Update User Profile</h1>
+    <br>
+    <form class="login-form" autocomplete="off" id="form_register" th:action="@{/save}" th:object="${user}" method="post">
+      <label for="form_id">User ID:</label>
+      <input type="text" th:field="*{id}" id="form_id" placeholder="User ID" readonly="readonly"/>
+      <div class="main">
+        <div class="Geeks1 GFG">
+          <label for="form_fname">First Name:</label>
+          <input type="text" th:field="*{firstname}" id="form_fname" placeholder="First Name" required/>
+          <span class="error_form" id="fname_error_message"></span>
+        </div>
+        <div class="Geeks1 GFG">
+          <label for="form_sname">Last Name:</label>
+          <input type="text" th:field="*{lastname}" id="form_sname" placeholder="Last Name" required/>
+          <span class="error_form" id="sname_error_message"></span>
+        </div>
+      </div>
+      <label for="form_email">Email ID:</label>
+      <input type="email" th:field="*{email}" id="form_email" placeholder="Email" required/>
+      <span class="error_form" id="email_error_message"></span>
+      <label for="form_username">Username:</label>
+      <input type="text" th:field="*{username}" id="form_username" placeholder="Username" required/>
+      <span class="error_form" id="username_error_message"></span>
+      <div class="selectdiv">
+        <label for="questions">Status:</label>
+          <select th:field="*{enabled}" id="questions" form="form_register" required>
+            <option value="true">Activate</option>
+            <option value="false">Deactivate</option>
+          </select>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Update User</button>
+      <p class="message" align="center"><a href="/admin">Go Back</a></p>
+      <p class="message" align="center"><a href="/home">Home</a></p>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+            $(function () {
+
+                $("#fname_error_message").hide();
+                $("#sname_error_message").hide();
+                $("#email_error_message").hide();
+                $("#username_error_message").hide();
+
+                var error_fname = false;
+                var error_sname = false;
+                var error_email = false;
+                var error_username = false;
+
+                $("#form_fname").focusout(function () {
+                    check_fname();
+                });
+                $("#form_sname").focusout(function () {
+                    check_sname();
+                });
+                $("#form_email").focusout(function () {
+                    check_email();
+                });
+                $("#form_username").focusout(function() {
+                    check_username();
+                });
+
+                function check_fname() {
+                    var pattern = /^[a-zA-Z]*$/;
+                    var fname = $("#form_fname").val();
+                    if (pattern.test(fname) && fname !== '') {
+                        $("#fname_error_message").hide();
+                        $("#form_fname").css("border-bottom", "2px solid #34F458");
+                    } else {
+                        $("#fname_error_message").html(""); //-------
+                        $("#fname_error_message").hide();   // hide to show
+                        $("#form_fname").css("border-bottom", "2px solid #F90A0A");
+                        error_fname = true;
+                    }
+                }
+
+                function check_sname() {
+                    var pattern = /^[a-zA-Z]*$/;
+                    var sname = $("#form_sname").val()
+                    if (pattern.test(sname) && sname !== '') {
+                        $("#sname_error_message").hide();
+                        $("#form_sname").css("border-bottom", "2px solid #34F458");
+                    } else {
+                        $("#sname_error_message").html("");    //------
+                        $("#sname_error_message").hide();     // hide to show
+                        $("#form_sname").css("border-bottom", "2px solid #F90A0A");
+                        error_fname = true;
+                    }
+                }
+
+                function check_email() {
+                    var pattern = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                    var email = $("#form_email").val();
+                    if (pattern.test(email) && email !== '') {
+                        $("#email_error_message").hide();
+                        $("#form_email").css("border-bottom", "2px solid #34F458");
+                    } else {
+                        $("#email_error_message").html("");   //-----
+                        $("#email_error_message").show();    // hide to show
+                        $("#form_email").css("border-bottom", "2px solid #F90A0A");
+                        error_email = true;
+                    }
+                }
+
+                function check_username() {
+                    var username_length = $("#form_username").val().length;
+                    if (username_length < 5) {
+                        $("#username_error_message").html(""); //-------
+                        $("#username_error_message").hide();   // hide to show
+                        $("#form_username").css("border-bottom", "2px solid #F90A0A");
+                        error_username = true;
+
+                    } else {
+                        $("#username_error_message").hide();
+                        $("#form_username").css("border-bottom", "2px solid #34F458");
+                    }
+                }
+
+                $("#form_register").submit(function () {
+                    error_fname = false;
+                    error_sname = false;
+                    error_email = false;
+                    error_username = false;
+
+                    check_fname();
+                    check_sname();
+                    check_email();
+                    check_username();
+
+                    if (error_fname === false && error_sname === false && error_email === false && error_username === false) {
+                        alert("User Registered Successfully");
+                        return true;
+                    } else {
+                        alert("Please Fill the form Correctly");
+                        return false;
+                    }
+
+
+                });
+            });
+
+        </script>
+
+</body>
+
+</html>
