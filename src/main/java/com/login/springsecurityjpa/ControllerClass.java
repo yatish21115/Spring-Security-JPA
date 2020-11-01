@@ -1,5 +1,7 @@
 package com.login.springsecurityjpa;
+import com.login.springsecurityjpa.Models.Role;
 import com.login.springsecurityjpa.Models.User;
+import com.login.springsecurityjpa.Repositories.RoleRepository;
 import com.login.springsecurityjpa.Repositories.UserService;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -18,6 +22,9 @@ public class ControllerClass {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    RoleRepository roleRepository;
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -49,9 +56,26 @@ public class ControllerClass {
         return modelAndView;
     }
 
-    @PostMapping("/save")
-    public ModelAndView saveUser(User user,@RequestParam("enabled") boolean enabled,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,@RequestParam("username") String username){
+    @GetMapping("/change")
+    public ModelAndView changeRole(User user, @RequestParam("number") int number){
         ModelAndView modelAndView = new ModelAndView();
+        String role="";
+        User reset_role = userService.isEmailAlreadyPresent(user);
+        if(number==4)role = "ADMIN";
+        if(number==3)role = "EDITOR";
+        if(number==2)role = "CREATOR";
+        if(number==1)role = "USER";
+        Role userRole = roleRepository.findByname(role);
+        reset_role.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        userService.saveEditUser(reset_role);
+        modelAndView.setViewName("redirect:/admin");
+        return modelAndView;
+    }
+
+    @PostMapping("/save")
+    public ModelAndView saveUser(User user,@RequestParam("enabled") boolean enabled,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,@RequestParam("username") String username,  @RequestParam("number") int number){
+        ModelAndView modelAndView = new ModelAndView();
+        String role="";
         User edit_user = userService.isEmailAlreadyPresent(user);
         modelAndView.addObject("successMessage", "The status is already"+((enabled==true)?"Activated":"Deactivated"));
         edit_user.setFirstname(firstname);
@@ -59,6 +83,12 @@ public class ControllerClass {
         edit_user.setEmail(email);
         edit_user.setUsername(username);
         edit_user.setEnabled(enabled);
+        if(number==4)role = "ADMIN";
+        if(number==3)role = "EDITOR";
+        if(number==2)role = "CREATOR";
+        if(number==1)role = "USER";
+        Role userRole = roleRepository.findByname(role);
+        edit_user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userService.saveEditUser(edit_user);
         modelAndView.addObject( "user",user);
         modelAndView.setViewName("redirect:admin");

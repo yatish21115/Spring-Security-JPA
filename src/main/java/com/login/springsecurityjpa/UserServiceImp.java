@@ -73,4 +73,9 @@ public class UserServiceImp implements UserService{
     public void delete(Long id) {
         userRepository.deleteById(id);  //Always do - SET FOREIGN_KEY_CHECKS=0; IN MYsql
     }
+
+    @Override
+    public Role getUser(Integer id) {
+        return roleRepository.findById(id).get();
+    }
 }

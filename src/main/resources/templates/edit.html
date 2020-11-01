@@ -38,12 +38,28 @@
       <label for="form_username">Username:</label>
       <input type="text" th:field="*{username}" id="form_username" placeholder="Username" required/>
       <span class="error_form" id="username_error_message"></span>
+      <div class="main">
+        <div class="Geeks1 GFG">
       <div class="selectdiv">
-        <label for="questions">Status:</label>
-          <select th:field="*{enabled}" id="questions" form="form_register" required>
+        <label for="status">Status:</label>
+          <select th:field="*{enabled}" id="status" form="form_register" required>
             <option value="true">Activate</option>
             <option value="false">Deactivate</option>
           </select>
+      </div>
+        </div>
+        <div class="Geeks1 GFG">
+      <div class="selectdiv">
+        <label for="roles">Authority:</label>
+      <select id="roles" name="number" form="form_register" required>
+        <option disabled selected value>-Select Authority-</option>
+        <option value="4">ADMIN</option>
+        <option value="3">EDITOR</option>
+        <option value="2">CREATOR</option>
+        <option value="1">USER</option>
+      </select>
+      </div>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary btn-block">Update User</button>
       <p class="message" align="center"><a href="/admin">Go Back</a></p>

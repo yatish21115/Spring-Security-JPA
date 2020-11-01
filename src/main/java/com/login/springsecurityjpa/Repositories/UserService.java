@@ -1,5 +1,6 @@
 package com.login.springsecurityjpa.Repositories;
 
+import com.login.springsecurityjpa.Models.Role;
 import com.login.springsecurityjpa.Models.User;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface UserService {
     public User get(Long id);
     public void delete(Long id);
     public void saveEditUser(User user);
+    public Role getUser(Integer Id);
 }
