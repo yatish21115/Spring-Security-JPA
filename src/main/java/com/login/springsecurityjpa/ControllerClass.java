@@ -56,22 +56,6 @@ public class ControllerClass {
         return modelAndView;
     }
 
-    @GetMapping("/change")
-    public ModelAndView changeRole(User user, @RequestParam("number") int number){
-        ModelAndView modelAndView = new ModelAndView();
-        String role="";
-        User reset_role = userService.isEmailAlreadyPresent(user);
-        if(number==4)role = "ADMIN";
-        if(number==3)role = "EDITOR";
-        if(number==2)role = "CREATOR";
-        if(number==1)role = "USER";
-        Role userRole = roleRepository.findByname(role);
-        reset_role.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-        userService.saveEditUser(reset_role);
-        modelAndView.setViewName("redirect:/admin");
-        return modelAndView;
-    }
-
     @PostMapping("/save")
     public ModelAndView saveUser(User user,@RequestParam("enabled") boolean enabled,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,@RequestParam("username") String username,  @RequestParam("number") int number){
         ModelAndView modelAndView = new ModelAndView();
